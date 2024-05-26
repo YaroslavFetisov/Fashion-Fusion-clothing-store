@@ -51,7 +51,7 @@ npm install
 ```
 ## Running the Project
 ### Backend
-1.Ensure you are in the FashionFusion/backend directory and the virtual environment is activated.
+1.Ensure you are in the FashionFusion/backend directory and the virtual environment is activated.  
 2.Run the Flask server:
 ```bash
 flask run
