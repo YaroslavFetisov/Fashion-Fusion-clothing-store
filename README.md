@@ -1,7 +1,7 @@
 # Fashion Fusion Clothing Store
 
 ## Project Description
-Fashion Fusion is an online clothing store developed as a group project for university. The website allows users to browse, search, and purchase clothing items. The frontend is built with React, and the backend is powered by Flask.
+Fashion Fusion is an online clothing store developed as a group project for university. The website allows users to browse and search for clothing items. The frontend is built with React, and the backend is powered by Flask.
 
 ## Prerequisites
 Before you begin, ensure you have the following installed:
