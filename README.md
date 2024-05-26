@@ -45,10 +45,7 @@ cd FashionFusion/frontend
 ```bash
 npm install
 ```
-3.To handle requests to the Flask backend during development, add the following proxy to your package.json file in the frontend directory:
-```json
-"proxy": "http://localhost:5000"
-```
+
 ## Running the Project
 ### Backend
 1.Ensure you are in the FashionFusion/backend directory and the virtual environment is activated.  
