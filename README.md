@@ -57,13 +57,13 @@ npm install
 flask run
 ```
 ### Frontend
-1.Ensure you are in the FashionFusion/frontend directory.
+1.Ensure you are in the FashionFusion/frontend directory.  
 2.Start the React development server:
 ```bash
 npm start
 ```
 ## Accessing the Application
-1.Open your browser and navigate to http://localhost:3000 to view the React frontend.
+1.Open your browser and navigate to http://localhost:3000 to view the React frontend.  
 2.The backend API can be accessed at http://localhost:5000.
 
 ## Usage
