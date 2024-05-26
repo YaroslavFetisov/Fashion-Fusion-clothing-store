@@ -15,11 +15,11 @@ Before you begin, ensure you have the following installed:
 ### Backend (Flask)
 1.Clone the repository:
 ```bash
-git clone https://github.com/your-username/FashionFusion.git
+git clone https://github.com/YaroslavFetisov/Fashion-Fusion-clothing-store.git
 ```
 2.Navigate to the backend directory:
 ```bash
-cd FashionFusion/backend
+cd Fashion-Fusion-clothing-store/backend
 ```
 3.Create and activate a virtual environment:
 ```bash
@@ -39,7 +39,7 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///site.db'
 ### Frontend (React)
 1.Navigate to the frontend directory:
 ```bash
-cd FashionFusion/frontend
+cd Fashion-Fusion-clothing-store/frontend
 ```
 2.Install the dependencies:
 ```bash
@@ -48,13 +48,13 @@ npm install
 
 ## Running the Project
 ### Backend
-1.Ensure you are in the FashionFusion/backend directory and the virtual environment is activated.  
+1.Ensure you are in the Fashion-Fusion-clothing-store/backend directory and the virtual environment is activated.  
 2.Run the Flask server:
 ```bash
 flask run
 ```
 ### Frontend
-1.Ensure you are in the FashionFusion/frontend directory.  
+1.Ensure you are in the Fashion-Fusion-clothing-store/frontend directory.  
 2.Start the React development server:
 ```bash
 npm start
