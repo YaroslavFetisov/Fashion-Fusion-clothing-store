@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 from sqlalchemy.exc import IntegrityError
 from flask_login import current_user
 from werkzeug.security import generate_password_hash
-from ..models import Customer, Order
+from ..models import Customer, Order, ProductImage
 from ..utils.db import db
 from ..utils.decorators import customer_required
 
@@ -68,8 +68,15 @@ def profile():
                     'category': item.product.category.name,
                     'size': item.product.size,
                     'color': item.product.color,
-                    'gender': item.product.gender
+                    'gender': item.product.gender,
+                    'images': []
                 }
+
+                # Отримання фотографій продукту
+                images = ProductImage.query.filter_by(product_id=item.product.id).all()
+                for image in images:
+                    product_info['images'].append(image.image_filename)
+
                 order_info['order_items'].append(product_info)
             order_list.append(order_info)
 
@@ -82,5 +89,3 @@ def profile():
         return jsonify(profile_info), 200
     except Exception as e:
         return jsonify({'message': 'Error: {}'.format(str(e))}), 500
-
-

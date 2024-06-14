@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from flask_login import current_user
-from ..models import Cart, Product, CartItem
+from ..models import Cart, Product, CartItem, ProductImage
 from ..utils.db import db
 from ..utils.decorators import customer_required
 
@@ -109,8 +109,15 @@ def view_cart():
                 "size": product.size,
                 "color": product.color,
                 "gender": product.gender,
-                "category": product.category.name
+                "category": product.category.name,
+                "images": []
             }
+
+            # Отримання фотографій продукту
+            images = ProductImage.query.filter_by(product_id=product.id).all()
+            for image in images:
+                product_info['images'].append(image.image_filename)
+
             cart_info.append(product_info)
 
         return jsonify(cart_info), 200

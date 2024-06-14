@@ -1,6 +1,5 @@
 from flask_login import UserMixin
 from .utils.db import db
-from datetime import datetime, timezone
 from sqlalchemy import CheckConstraint
 
 
@@ -23,7 +22,8 @@ class Admin(db.Model, UserMixin):
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True, nullable=False)
-    products = db.relationship('Product', backref='category', lazy=True, cascade='all, delete-orphan')  # Каскадне видалення
+    products = db.relationship('Product', backref='category', lazy=True,
+                               cascade='all, delete-orphan')  # Каскадне видалення
 
 
 class Product(db.Model):
@@ -31,17 +31,25 @@ class Product(db.Model):
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(500))
     price = db.Column(db.Float, nullable=False)
-    stock_quantity = db.Column(db.Integer, nullable=False)  # Кількість товару на складі
-    category_id = db.Column(db.Integer, db.ForeignKey('category.id', ondelete='CASCADE'), nullable=False)  # Забороняємо неіснуючу категорію та каскадне видалення при видаленні категорії
+    stock_quantity = db.Column(db.Integer, nullable=False)
+    category_id = db.Column(db.Integer, db.ForeignKey('category.id', ondelete='CASCADE'), nullable=False)
+    size = db.Column(db.String(10))
+    color = db.Column(db.String(20))
+    gender = db.Column(db.String(20))
+    images = db.relationship('ProductImage', backref='product', lazy=True, cascade='all, delete-orphan')
 
-    # Додамо обмеження на поле stock_quantity
     __table_args__ = (
         CheckConstraint('stock_quantity >= 0', name='stock_quantity_positive'),
     )
 
-    size = db.Column(db.String(10))
-    color = db.Column(db.String(20))
-    gender = db.Column(db.String(20))  # Поле для статі товару
+
+class ProductImage(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    product_id = db.Column(db.Integer, db.ForeignKey('product.id', ondelete='CASCADE'), nullable=False)
+    image_filename = db.Column(db.String(500))
+
+    def image_url(self):
+        return f'/uploads/{self.image_filename}'
 
 
 class Order(db.Model):

@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_login import current_user
 from datetime import datetime
-from ..models import Order, OrderItem, CartItem
+from ..models import Order, OrderItem, CartItem, ProductImage
 from ..utils.db import db
 from ..utils.decorators import customer_required, admin_required
 
@@ -114,8 +114,15 @@ def list_orders():
                     'quantity': item.quantity,
                     'total_price': item.price * item.quantity,
                     'gender': item.product.gender,
-                    'size': item.product.size
+                    'size': item.product.size,
+                    'images': []
                 }
+
+                # Отримання фотографій продукту
+                images = ProductImage.query.filter_by(product_id=item.product.id).all()
+                for image in images:
+                    product_info['images'].append(image.image_filename)
+
                 order_info['order_items'].append(product_info)
             order_list.append(order_info)
 
@@ -124,3 +131,4 @@ def list_orders():
     except Exception as e:
         error_message = "Error occurred while retrieving orders: {}".format(str(e))
         return jsonify({"error": error_message}), 500
+
