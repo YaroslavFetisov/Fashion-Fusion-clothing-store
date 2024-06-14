@@ -2,7 +2,6 @@ from flask_login import UserMixin
 from .utils.db import db
 from datetime import datetime, timezone
 from sqlalchemy import CheckConstraint
-from pytz import timezone
 
 
 class Customer(db.Model, UserMixin):
@@ -49,8 +48,8 @@ class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     status = db.Column(db.String(20))
     total_amount = db.Column(db.Float)
-    created_at = db.Column(db.DateTime, nullable=False, default=lambda: datetime.now(timezone('Europe/Kiev')).astimezone(timezone('UTC')))  # Час створення, з поясом +3
-    updated_at = db.Column(db.DateTime, nullable=False, default=lambda: datetime.now(timezone('Europe/Kiev')).astimezone(timezone('UTC')), onupdate=lambda: datetime.now(timezone('Europe/Kiev')).astimezone(timezone('UTC')))  # Час оновлення, з поясом +3
+    created_at = db.Column(db.String(20), nullable=False)
+    updated_at = db.Column(db.String(20), nullable=False)
     customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'))
     customer = db.relationship('Customer', backref=db.backref('orders', lazy=True))
     items = db.relationship('OrderItem', backref='order', lazy=True, cascade='all, delete-orphan')

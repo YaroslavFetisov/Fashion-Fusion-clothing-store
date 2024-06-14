@@ -50,8 +50,9 @@ def profile():
         order_list = []
         for order in orders:
             order_info = {
-                'order_id': order.order_id,
-                'order_date': order.order_date,
+                'order_id': order.id,
+                'created_at': order.created_at,
+                'updated_at': order.updated_at,
                 'status': order.status,
                 'total_amount': order.total_amount,
                 'order_items': []

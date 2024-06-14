@@ -1,7 +1,6 @@
 from flask import Blueprint, request, jsonify
 from flask_login import current_user
 from datetime import datetime
-from pytz import timezone
 from ..models import Order, OrderItem, CartItem
 from ..utils.db import db
 from ..utils.decorators import customer_required, admin_required
@@ -25,11 +24,13 @@ def create_order():
 
         total_amount = sum(item.product.price * item.quantity for item in cart_items)
 
+        current_time_utc = datetime.now()
+
         order = Order(
             status="Pending",
             total_amount=total_amount,
-            created_at=datetime.now(timezone('Europe/Kiev')).astimezone(timezone('UTC+3')),  # Час створення, з поясом +3
-            updated_at=datetime.now(timezone('Europe/Kiev')).astimezone(timezone('UTC+3')),  # Час оновлення, з поясом +3
+            created_at=current_time_utc.strftime('%Y-%m-%d %H:%M:%S'),
+            updated_at=current_time_utc.strftime('%Y-%m-%d %H:%M:%S'),
             customer=current_user,
             items=[]
         )
@@ -38,9 +39,7 @@ def create_order():
             order_item = OrderItem(
                 product=cart_item.product,
                 quantity=cart_item.quantity,
-                price=cart_item.product.price,
-                size=cart_item.product.size,
-                category=cart_item.product.category.name
+                price=cart_item.product.price
             )
             order.items.append(order_item)
 
@@ -96,8 +95,8 @@ def list_orders():
                 'order_id': order.id,
                 'status': order.status,
                 'total_amount': order.total_amount,
-                'created_at': order.created_at.isoformat(),
-                'updated_at': order.updated_at.isoformat(),
+                'created_at': order.created_at,
+                'updated_at': order.updated_at,
                 'customer': {
                     'id': order.customer.id,
                     'name': order.customer.name,
