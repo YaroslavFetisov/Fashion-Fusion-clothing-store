@@ -1,7 +1,8 @@
 from flask import abort
 from flask_login import current_user
 from functools import wraps
-from app import Admin, Customer
+from ..models import Admin, Customer
+
 
 def admin_required(f):
     @wraps(f)
