@@ -1,0 +1,103 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  
+  .loginBox {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+  }
+  
+  .loginText {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+  
+  .registerContainer {
+    margin: 10px 0;
+    font-size: 14px;
+  }
+  
+  .signUpLink {
+    color: #007BFF;
+    text-decoration: none;
+  }
+  
+  .loginButton {
+    width: 80%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .exploreBox {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f8f8;
+  }
+  
+  .exploreText {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: right;
+  }
+  
+  .highlight {
+    background-color: #FFD700;
+  }
+  
+  .error {
+    color: red;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  text-align: center;
+  position: relative;
+}
+
+.closebtn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.success {
+  padding: 20px;
+  background-color: #4CAF50;
+  color: white;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  text-align: center;
+}

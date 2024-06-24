@@ -1,0 +1,42 @@
+.aboutContainer {
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 60px); /* Adjusted for navbar height */
+    font-family: Arial, sans-serif;
+  }
+  
+  .aboutTextBox {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f8f8;
+  }
+  
+  .exploreText {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: right;
+  }
+  
+  .highlight {
+    background-color: #FFD700;
+  }
+  
+  .aboutContent {
+    flex: 2;
+    padding: 20px;
+  }
+  
+  .aboutTitle {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .sectionTitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  

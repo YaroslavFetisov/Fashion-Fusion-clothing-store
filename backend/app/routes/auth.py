@@ -2,6 +2,11 @@ from flask import Blueprint, request, jsonify
 from flask_login import login_required, login_user, logout_user
 from werkzeug.security import check_password_hash
 from ..models import Customer, Admin
+from flask import Flask
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
